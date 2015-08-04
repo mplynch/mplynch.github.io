@@ -1,0 +1,30 @@
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Bowl</th>
+            <th>Team 1</th>
+            <th>Team 2</th>
+            <th>Pick</th>
+            <th>Points</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="bowl in bowls | orderByPriority" class="table-striped">
+            <td>{{bowl.name}}</td>
+            <td>{{teams[bowl.team1].name}}</td>
+            <td>{{teams[bowl.team2].name}}</td>
+            <td>
+                <select class="form-control" ng-model="picks[bowl.$id].winner">
+                    <option value=""></option>
+                    <option value="{{bowl.team1}}">{{teams[bowl.team1].name}}</option>
+                    <option value="{{bowl.team2}}">{{teams[bowl.team2].name}}</option>
+                </select>
+            </td>
+            <td>
+                <input id="{{bowl.$id}}_points" type="number" ng-model="picks[bowl.$id].points" min="1" max="35">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

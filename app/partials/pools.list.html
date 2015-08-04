@@ -1,0 +1,14 @@
+<h1>My  Pools</h1>
+<div class="btn-toolbar" role="toolbar">
+    <div class="btn-group">
+            <button type="button" class="btn btn-default" ng-click="add()">Create a Pool</button>
+    </div>
+</div>
+<hr/>
+<div class="well">
+    <ul class="unstyled">
+        <li ng-repeat="pool in pools | orderByPriority  | inArrayMatchByField:userPools:'$id' | orderBy:'name'"">
+            <a ng-model="pool.$priority" href="#/pools/{{pool.$id}}">{{pool.name}}</a>
+        </li>
+    </ul>
+</div>

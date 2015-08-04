@@ -1,0 +1,46 @@
+{
+    "rules": {
+        "admins": {
+            ".read": "auth != null",
+            ".write": "false"
+        },
+        "invitations": {
+            ".read": true,
+            "$userId": {
+                "$poolId" : {
+                    ".write": "(!data.exists() && root.child('pools').child($poolId).child('managers').hasChild(auth.uid)) || $userId == auth.uid"
+                }
+            }
+        },
+        "picks": {
+            "$userId": {
+                ".read": "$userId == auth.uid",
+                ".write": "$userId == auth.uid"
+            }
+        },
+        "pools": {
+            ".read": "auth != null",
+            "$pool": {
+                ".write": "!data.exists() || data.child('managers').hasChild(auth.uid) == true"
+            }
+        },
+        "seasons": {
+            ".read": "auth != null",
+            ".write": "root.child('admins').hasChild(auth.uid) == true"
+        },
+        "settings": {
+            ".read": "auth != null",
+            ".write": "root.child('admins').hasChild(auth.uid) == true"
+        },
+        "teams": {
+            ".read": "auth != null",
+            ".write": "root.child('admins').hasChild(auth.uid) == true"
+        },
+        "users": {
+            ".read": "auth != null",
+            "$user": {
+                ".write": "$user == auth.uid"
+            }
+        }
+    }
+}

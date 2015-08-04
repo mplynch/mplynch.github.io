@@ -1,0 +1,30 @@
+<!-- TODO: Replace table with ng-grid? -->
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Points</th>
+            <th>Available</th>
+            <th>Possible</th>
+            <th>Correct</th>
+            <th>Incorrect</th>
+            <th>% Correct</th>
+            <th>Blended</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in users | orderByPriority | inArrayMatchByField:poolUsers:'$id' | orderBy:'name'"
+            class="table-striped">
+            <td>{{user.name}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

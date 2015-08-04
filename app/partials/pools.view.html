@@ -1,0 +1,31 @@
+<h1>{{pool.name}}</h1>
+<div ng-show="isManager">
+    <div class="btn-toolbar" role="toolbar">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                Manage
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a ng-click="edit(pool)">Edit</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="well">
+    <tabset>
+        <tab heading="Leaderboard">
+            <ng-include src="'partials/pool.leaderboard.html'" />
+        </tab>
+        <tab heading="Results">
+            <ng-include src="'partials/pool.results.html'" />
+        </tab>
+        <tab heading="All Picks">
+            <ng-include src="'partials/pool.picks.html'" />
+        </tab>
+        <tab heading="My Picks">
+            <ng-include src="'partials/pool.mypicks.html'" />
+        </tab>
+    </tabset>
+</div>

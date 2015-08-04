@@ -1,0 +1,22 @@
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Time (EST)</th>
+            <th>Matchup</th>
+            <th>Winner</th>
+            <th ng-repeat="user in users | orderByPriority | inArrayMatchByField:poolUsers:'$id' | orderBy:'name'">{{user.name}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="bowl in bowls | orderByPriority | orderBy:'date'" class="table-striped">
+            <td>{{bowl.date | date: 'shortDate'}}</td>
+            <td>{{bowl.date | date: 'shortTime'}}</td>
+            <td>{{teams[bowl.team1].name}} vs. {{teams[bowl.team2].name}}</td>
+            <td>{{bowl.winner == null ? "-" : bowl.winner }}</td>
+            <td ng-repeat="user in users | orderByPriority | inArrayMatchByField:poolUsers:'$id' | orderBy:'name'">0</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

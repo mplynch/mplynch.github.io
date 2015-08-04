@@ -1,0 +1,56 @@
+<div class="panel panel-default" ng-controller="PoolDetailCtrl" ng-show="pool">
+    <div class="panel-body">
+        <tabset>
+            <tab heading="Basic Info">
+                <div class="control-group">
+                    <label class="control-label" for="name">Name</label>
+
+                    <div class="controls">
+                        <input type="text" name="name" id="name" ng-model="item.name" class="form-control" required>
+                    </div>
+                </div>
+            </tab>
+            <tab heading="Users">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <td></td>
+                            <td>Name</td>
+                            <td>Email</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="user in users | orderByPriority | inArrayMatchByField:poolUsers:'$id' | orderBy:'name'" class="table-striped">
+                            <td><input type="checkbox"></td>
+                            <td>{{user.name}}</td>
+                            <td>{{user.email}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="input-group">
+                    <input type="text" ng-model="user"
+                           typeahead="user as user.name for user in users | orderByPriority | filter: $viewValue" class="form-control"
+                           placeholder="Search by name or email" typeahead-on-select="setCurrentUser($item, $model, $label)" required>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="invite()" type="button" ng-disabled="!user.name">Invite</button>
+                    </span>
+                </div>
+            </tab>
+        </tabset>
+    </div>
+    <div class="panel-footer">
+        <div class="control-group">
+            <div class="controls">
+                <button class="btn btn-primary" ng-click="ok()">Save</button>
+                <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
