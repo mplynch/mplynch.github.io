@@ -1,0 +1,15 @@
+<h4>What is the source of this suggestion?</h4>
+<p>
+  <select ng-model="suggestion.source">
+    <option ng-repeat="source in sources | orderBy:'text'" value="{{source.value}}">{{source.text}}</option>
+  </select>
+</p>
+<br/>
+<p>
+  <a ui-sref="new.actiontype">
+    <button class="btn btn-lg" type="button">Back</button>
+  </a>
+  <a ui-sref="new.description">
+    <button class="btn btn-lg" type="button">Next</button>
+  </a>
+</p>
