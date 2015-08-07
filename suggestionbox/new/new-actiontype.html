@@ -1,0 +1,15 @@
+  <h4>What type of action would you say needs to be taken?</h4>
+  <p>
+    <select ng-model="suggestion.actiontype">
+      <option ng-repeat="type in actiontypes | orderBy:'text'" value="{{type.value}}">{{type.text}}</option>
+    </select>
+  </p>
+  <br/>
+  <p>
+    <a ui-sref="new.type">
+      <button class="btn btn-lg" type="button">Back</button>
+    </a>
+    <a ui-sref="new.source">
+      <button class="btn btn-lg" type="button">Next</button>
+    </a>
+  </p>
