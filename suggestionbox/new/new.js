@@ -50,7 +50,7 @@ angular.module('myApp.new', ['ui.router', 'myApp.datastub'])
   });
 }])
 
-.controller('NewCtrl', ['$scope', '$state', 'datastub', function($scope, $state, datastub) {
+.controller('NewCtrl', ['$scope', '$state', 'datastub', '$log', function($scope, $state, datastub, $log) {
   $scope.suggestion = {};
   $scope.types = datastub.types;
   $scope.actiontypes = datastub.actiontypes;
@@ -59,6 +59,7 @@ angular.module('myApp.new', ['ui.router', 'myApp.datastub'])
   $scope.supervisors = datastub.supervisors;
 
   var stateOrder = ['new.type', 'new.actiontype', 'new.source', 'new.description', 'new.supervisor', 'new.review'];
+  var currentState = stateOrder[0];
 
   $scope.goToNextState = function() {
     // TODO: Validate data and dynamically go to next state
@@ -69,6 +70,8 @@ angular.module('myApp.new', ['ui.router', 'myApp.datastub'])
   };
 
   $scope.processForm = function() {
+    datastub.AddSuggestion($scope.suggestion);
+
     $state.go('new.finished');
   };
 

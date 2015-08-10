@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.list', ['ui.router'])
+angular.module('myApp.list', ['ui.router', 'ui.grid', 'myApp.datastub'])
 
 .config(['$stateProvider', function($stateProvider) {
   $stateProvider.state('list', {
@@ -10,6 +10,11 @@ angular.module('myApp.list', ['ui.router'])
   });
 }])
 
-.controller('ListCtrl', [function() {
+.controller('ListCtrl', ['$scope', 'datastub', '$log', function($scope, datastub, $log) {
+  $scope.suggestions = datastub.suggestions;
+  $log.log(datastub.suggestions);
 
+  $scope.isGridVisible = function() {
+    return $scope.length > 0;
+  }
 }]);

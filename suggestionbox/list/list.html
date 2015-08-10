@@ -1,5 +1,8 @@
-<p>This is the partial for list.</p>
-<p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1 class="text-center">Suggestion List</h1>
+  </div>
+  <div class="text-center panel-body" id="form-views">
+    <div ui-grid="{data: suggestions}" class="grid"></div>
+  </div>
+</div
